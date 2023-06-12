@@ -77,16 +77,14 @@ function TechDiversityGender() {
 
     // Loop over every row in the data.
     for (var i = 0; i < this.data.getRowCount(); i++) {
-
       // Calculate the y position for each company.
       var lineY = (lineHeight * i) + this.layout.topMargin;
-
       // Create an object that stores data from the current row.
       var company = {
         // Convert strings to numbers.
-        // 'name': ???
-        // 'female': ???
-        // 'male': ???
+         name: this.data.getString(i, 0),
+         female: this.data.getNum(i, 1),
+				 male: this.data.getNum(i, 2),
       };
 
       // Draw the company name in the left margin.
@@ -105,7 +103,11 @@ function TechDiversityGender() {
            lineHeight - this.layout.pad);
 
       // Draw male employees rectangle.
-      // ???
+			fill(this.maleColour);
+      rect(this.layout.rightMargin,
+           lineY,
+           - this.mapPercentToWidth(company.male),
+           lineHeight - this.layout.pad);
     }
 
     // Draw 50% line
